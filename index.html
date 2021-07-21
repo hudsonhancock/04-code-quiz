@@ -4,42 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> 
     <link rel="stylesheet" href="./Assets/style.css">
     <title>Code Quiz</title>
 </head>
 <body>
-    <div class="wrapper">
-    <header>
-        <div class="container_head">
-        <a id="highscores_btn" href="">View Highscores</a>
-        <h3>Time: <span id="time">60</span></h3>
-    </div>
-    </header>
 
-    <section class="question_container">
-        <h2 id="question">Question Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-             Eaque omnis vel quasi voluptatibus quae, minima magni?</h2>
-
-        </section>
-
-    <section class="answer_container">
-        <div id="buttons">
-            <a class="button" href="">Answer 1</a>
-            <a class="button" href="">Answer 2</a>
-            <a class="button" href="">Answer 3</a>
-            <a class="button" href="">Answer 4</a>
+    <div class="quiz-container">
+        <div class="quiz-header">
+        <h2>Question Text</h2>
+            <ul>
+                <li>
+                    <input type="radio" id="a" name="answer">
+                    <label id="a_text" for="c">Question</label>
+                </li>
+                <li>
+                    <input type="radio" id="b" name="answer">
+                    <label id="b_text" for="a">Question</label>
+                </li>
+                <li>
+                    <input type="radio" id="c" name="answer">
+                    <label id="c_text" for="a">Question</label>
+                </li>
+                <li>
+                    <input type="radio" id="d" name="answer">
+                    <label id="d_text" for="d">Question</label>
+                </li>
+            </ul>
         </div>
-    </section>
+        <button href="#" id="submit">Submit</button>
 
-        <hr>
-<section id="result_container">
-    <p id="result">Correct</p>
-
-</section>
+    </div>
     
-</div>
 
-
-    <script src="./Assets/app.js"></script>
 </body>
 </html>
