@@ -12,30 +12,34 @@
 
     <div class="quiz-container">
         <div class="quiz-header">
-        <h2>Question Text</h2>
+        <h2 id="question">Question Text</h2>
             <ul>
                 <li>
                     <input type="radio" id="a" name="answer">
-                    <label id="a_text" for="c">Question</label>
+                    <label id="a_text" class="answer">Question</label>
                 </li>
                 <li>
                     <input type="radio" id="b" name="answer">
-                    <label id="b_text" for="a">Question</label>
+                    <label id="b_text" class="answer">Question</label>
                 </li>
                 <li>
                     <input type="radio" id="c" name="answer">
-                    <label id="c_text" for="a">Question</label>
+                    <label id="c_text" class="answer">Question</label>
                 </li>
                 <li>
                     <input type="radio" id="d" name="answer">
-                    <label id="d_text" for="d">Question</label>
+                    <label id="d_text" class="answer">Question</label>
                 </li>
             </ul>
         </div>
-        <button href="#" id="submit">Submit</button>
+        <button class="hide" id="submit" onclick="gradeAnswer()">Submit</button>
+        <button id="start">Start</button>
 
     </div>
-    
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="./Assets/app.js"></script>
 </body>
 </html>
+
+<!-- alternative way of naming if id is used somewhere else. -->

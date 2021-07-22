@@ -58,6 +58,11 @@ button{
     border-bottom-right-radius: 10px;
 }
 
+.hide{
+    display:none;
+}
+
+
 h2{
     margin: 0;
 }
