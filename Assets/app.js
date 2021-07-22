@@ -1,5 +1,6 @@
 //dot notation
 var start = document.getElementById('start');
+var greeting = document.getElementById('greeting');
 var questionEl = document.getElementById('question');
 var submit = document.getElementById('submit');
 var postScore = document.getElementById('post_score');
@@ -75,7 +76,9 @@ var quizData = [
 
     
 function startQuiz(){
+    greeting.classList.add('hide');
     start.classList.add("hide");
+    list.classList.remove('hide')
     submit.classList.remove("hide");
     timerEl.classList.remove("hide");
     loadQuiz();
@@ -179,7 +182,7 @@ var latestAnswer = "";
      });
 
      saveBtnEl.addEventListener('click', function(){
-         
+
      })
 
      start.addEventListener('click', startQuiz);
