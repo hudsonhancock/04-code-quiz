@@ -1,7 +1,7 @@
 //dot notation
 var start = document.getElementById('start');
-var submit = document.getElementById('submit');
 var questionEl = document.getElementById('question');
+var submit = document.getElementById('submit');
 var aText = document.getElementById('a_text');
 var bText = document.getElementById('b_text');
 var cText = document.getElementById('c_text');
@@ -10,6 +10,8 @@ var inputA = document.getElementById('a');
 var inputB = document.getElementById('b');
 var inputC = document.getElementById('c');
 var inputD = document.getElementById('d');
+
+var currentQuiz = 0;
 
 // quizData[0].question
 // quizData[0].a
@@ -33,21 +35,21 @@ var quizData = [
         correct: 'False'
     }, {
         question: 'How do you call a function named "myFunction"?',
-            a: 'myFunction()',
-            b: 'call my Function()',
-            c: 'call function myFunction()',
-            d: '===>',
-
+        a: 'myFunction()',
+        b: 'call my Function()',
+        c: 'call function myFunction()',
+        d: '===>',
+        
         correct: 'myFunction()'
     }, {
         question: 'What does HTML stand for?',
-
+        
         a: 'Hyper Text Markup Language',
         b: 'How The Money Lives',
         c: 'Hope Terry Makes Lunch',
         c: 'Hairy Toes Mustard Lake',
-
-    correct: 'Hyper Text Markup Language'
+        
+        correct: 'Hyper Text Markup Language'
     }, {
         question: 'How to write an IF statement in JavaScript?',
         a: 'if i == 5 then',
@@ -58,54 +60,67 @@ var quizData = [
     }
 ]
 
-
-
-
-
-    function getAnswer(){
-        var selected = document.querySelector('input[type="radio"]:checked');
-        var selectedAnswer = selected.value;
-        console.log(selectedAnswer);
-    }
-
-var testObject = {
-    name: 'Hudson',
-    score: '89'
+function getAnswer(){
+    var selected = document.querySelector('input[type="radio"]:checked');
+    var selectedAnswer = selected.value;
+    console.log(selectedAnswer);
 }
 
-function showQuestion(){
+// var testObject = {
+    //     name: 'Hudson',
+    //     score: '89'
+    // }
+    // localStorage.setItem("scores", JSON.stringify(testObject));
+
+function setValue(){
+    var currentQuizData = quizData[currentQuiz];
+
     for(i = 0; i <= quizData.length; i++){
-        console.log(quizData.length)
-        setValue();
-        start.classList.add("hide");
-        submit.classList.remove("hide");
-        questionEl.innerHTML = quizData[0].question;
-        aText.innerHTML = quizData[0].a;
-        bText.innerHTML = quizData[0].b;
-        cText.innerHTML = quizData[0].c;
-        dText.innerHTML = quizData[0].d;
-        break;
-        submit.addEventListener('click', getAnswer);
-        continue;
+            inputA.setAttribute('value', currentQuizData.a);
+            inputB.setAttribute('value', currentQuizData.b);
+            inputC.setAttribute('value', currentQuizData.c);
+            inputD.setAttribute('value', currentQuizData.d);
+        }
     }
-}
 
+function loadQuiz(){
+    var currentQuizData = quizData[currentQuiz];
+            setValue();
+            start.classList.add("hide");
+            submit.classList.remove("hide");
+            questionEl.innerHTML = currentQuizData.question;
+            aText.innerHTML = currentQuizData.a;
+            bText.innerHTML = currentQuizData.b;
+            cText.innerHTML = currentQuizData.c;
+            dText.innerHTML = currentQuizData.d;
+        }
+        
+        
+
+//Handles the submit click event
+        submit.addEventListener('click', () => {
+            currentQuiz++;
+
+            if(currentQuiz <= quizData.length){
+                getAnswer();
+                setValue();
+                loadQuiz();
+            } else{
+               alert('You finished!');
+        }
+
+        }); 
         
 
 
-    function setValue(){
-        for(i = 0; i <= quizData.length; i++){
-            inputA.setAttribute('value', quizData[0].a);
-            inputB.setAttribute('value', quizData[0].b);
-            inputC.setAttribute('value', quizData[0].c);
-            inputD.setAttribute('value', quizData[0].d);
-        }
-    }
+
+
+
+
                 
 
-// localStorage.setItem("scores", JSON.stringify(testObject));
 
-start.addEventListener('click', showQuestion);
+start.addEventListener('click', loadQuiz);
 
 
 

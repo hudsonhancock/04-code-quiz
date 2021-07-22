@@ -75,5 +75,12 @@ ul{
 ul li{
     font-size: 1.2;
     margin: 1rem 0;
+}
 
+ul li label{
+    cursor: pointer;
+}
+
+#submit{
+    cursor: pointer;
 }
