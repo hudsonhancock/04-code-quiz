@@ -4,6 +4,10 @@ var questionEl = document.getElementById('question');
 var submit = document.getElementById('submit');
 var postScore = document.getElementById('post_score');
 var timerEl = document.getElementById('timer');
+var saveBtnEl = document.getElementById('save');
+var saveMenu = document.getElementById('save_menu');
+var saveText = document.getElementById('save_text');
+var saveName = document.getElementById('name');
 var aText = document.getElementById('a_text');
 var bText = document.getElementById('b_text');
 var cText = document.getElementById('c_text');
@@ -166,8 +170,17 @@ var latestAnswer = "";
      postScore.addEventListener('click', function(){
         list.classList.add("hide");
         currentQuiz++;
-
+        postScore.classList.add('hide');
+        saveBtnEl.classList.remove('hide');
+        saveMenu.classList.remove('hide');
+        questionEl.innerText = '';
+        saveText.innerText = 'What is your name?';
+        saveName.classList.remove('hide');
      });
+
+     saveBtnEl.addEventListener('click', function(){
+         
+     })
 
      start.addEventListener('click', startQuiz);
     //This loads up the next question until it display the high-score page.

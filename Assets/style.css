@@ -64,7 +64,7 @@ button{
     border-bottom-right-radius: 10px;
 }
 
-#post_score{
+#post_score, #save{
     background-color: green;
 }
 
@@ -93,4 +93,22 @@ ul li label{
 
 #submit{
     cursor: pointer;
+}
+
+#save_menu{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#save_text{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#name{
+    margin: 20px 90px;
+    padding: 10px 0 10px 10px;
+    border-radius: 5px;
+    /* padding: 10px 50px; */
 }
