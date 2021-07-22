@@ -64,6 +64,10 @@ button{
     border-bottom-right-radius: 10px;
 }
 
+#post_score{
+    background-color: green;
+}
+
 .hide{
     display:none;
 }

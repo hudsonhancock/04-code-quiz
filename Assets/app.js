@@ -12,9 +12,14 @@ var inputA = document.getElementById('a');
 var inputB = document.getElementById('b');
 var inputC = document.getElementById('c');
 var inputD = document.getElementById('d');
-var list = document.getElementsByTagName('ul');
+var list = document.getElementById('list');
 
 var currentQuiz = 0;
+
+var storageData = {
+            name: 'Hudson',
+            score: '89'
+}
 
 
 // quizData[0].question
@@ -98,18 +103,14 @@ function setValue(){
 var totalTime = '100'
 
 function startTimer(){
-    if(totalTime >= 1){
+    if(currentQuiz < 5){
         totalTime--;
         // console.log(totalTime);
         timerEl.innerText = totalTime;
     } else{
-        timerEl.innerText = 'You are out of time.'
         list.classList.add('hide');
+        return;
     }
-        
-        // if(totalTime = 0){
-        //     timerEl.innerText = 'You ran out of time.';
-        // }
 }
 
 function removeSelectedBtn(){
@@ -158,11 +159,14 @@ var latestAnswer = "";
 
             submit.classList.add("hide");
             postScore.classList.remove("hide");
+            postScore.setAttribute
         }
      });
 
      postScore.addEventListener('click', function(){
-         
+        list.classList.add("hide");
+        currentQuiz++;
+
      });
 
      start.addEventListener('click', startQuiz);
@@ -220,8 +224,6 @@ var latestAnswer = "";
     
     //JSON.parse()
     
-    // var testObject = {
-        //     name: 'Hudson',
-        //     score: '89'
+
         // }
         // localStorage.setItem("scores", JSON.stringify(testObject));
