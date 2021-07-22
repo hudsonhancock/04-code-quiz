@@ -12,6 +12,8 @@ var inputC = document.getElementById('c');
 var inputD = document.getElementById('d');
 
 var currentQuiz = 0;
+var latestAnswer = [];
+
 
 // quizData[0].question
 // quizData[0].a
@@ -25,7 +27,7 @@ var quizData = [
         b: 'js',
         c: 'script',
         d: 'javascript',
-        correct: "script",
+        correct: 'script',
     }, {
         question: "The external JavaScript file must contain the script tag.",
         a: 'False',
@@ -60,96 +62,135 @@ var quizData = [
     }
 ]
 
-function getAnswer(){
-    var selected = document.querySelector('input[type="radio"]:checked');
-    var selectedAnswer = selected.value;
-    console.log(selectedAnswer);
-}
 
-// var testObject = {
-    //     name: 'Hudson',
-    //     score: '89'
-    // }
-    // localStorage.setItem("scores", JSON.stringify(testObject));
+    
+function startQuiz(){
+    start.classList.add("hide");
+    submit.classList.remove("hide");
+    loadQuiz();
+    setInterval(startTimer, 1000);
+    
+}
 
 function setValue(){
     var currentQuizData = quizData[currentQuiz];
 
-    for(i = 0; i <= quizData.length; i++){
-            inputA.setAttribute('value', currentQuizData.a);
+    for(i = 0; i < quizData.length; i++){
+        inputA.setAttribute('value', currentQuizData.a);
             inputB.setAttribute('value', currentQuizData.b);
             inputC.setAttribute('value', currentQuizData.c);
             inputD.setAttribute('value', currentQuizData.d);
         }
     }
 
+function removeSelectedBtn(){
+
+}
+
+
+var totalTime = '100'
+
+function startTimer(){
+        totalTime--;
+        // console.log(totalTime);
+    }
+
+
 function loadQuiz(){
-    var currentQuizData = quizData[currentQuiz];
-            setValue();
-            start.classList.add("hide");
-            submit.classList.remove("hide");
-            questionEl.innerHTML = currentQuizData.question;
-            aText.innerHTML = currentQuizData.a;
-            bText.innerHTML = currentQuizData.b;
-            cText.innerHTML = currentQuizData.c;
-            dText.innerHTML = currentQuizData.d;
-        }
-        
-        
+ var currentQuizData = quizData[currentQuiz];
+        setValue();
+
+        questionEl.innerHTML = currentQuizData.question;
+        aText.innerHTML = currentQuizData.a;
+        bText.innerHTML = currentQuizData.b;
+        cText.innerHTML = currentQuizData.c;
+        dText.innerHTML = currentQuizData.d;
+    }
+
+function getAnswer(){
+    var selected = document.querySelector('input[type="radio"]:checked');
+    
+    if(!selected){
+        alert('You must select an answer.');
+    } else{
+        latestAnswer.push(selected.value);
+        console.log(latestAnswer);
+        currentQuiz++;
+        loadQuiz();
+    }
+}
+
+
+
 
 //Handles the submit click event
-        submit.addEventListener('click', () => {
-            currentQuiz++;
+    submit.addEventListener('click', () => {
+    var answer = getAnswer();
 
-            if(currentQuiz <= quizData.length){
-                getAnswer();
-                setValue();
-                loadQuiz();
-            } else{
-               alert('You finished!');
+    if(latestAnswer === quizData[currentQuiz].correct){
+        console.log('correct');
+    } else{
+        totalTime = totalTime - 10;
+
+    }
+
+
+        if(currentQuiz <= quizData.length){
+            // getAnswer();
+            setValue();
+            loadQuiz();
+            
+        } else{
+            alert('You finished!');
+            questionEl.innerHTML = "doop"
+            aText.innerHTML = "doop"
+            bText.innerHTML = "doop"
+            cText.innerHTML = "doop"
+            dText.innerHTML = "doop"
         }
-
-        }); 
         
-
-
-
-
-
-
-                
-
-
-start.addEventListener('click', loadQuiz);
-
-
-
-
-// GIVEN I am taking a code quiz 
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and my score
-
-////Is this one or two functions?
-// startTimer()
-// showQuestion()
-//-----------------------------------------------
-// if(answer == false), then deduct 6 from time
-
-//What is the user going to have to do..
-
-//start button, radio button, high-score button, percede to the next question
-
-//go through loop to change index number
-//event listener is going to trigger timer, 
-
-// correct and incorrect function for answer that effects time
-
-//JSON.parse()
+    }); 
+    
+    
+    
+    
+    
+    start.addEventListener('click', startQuiz);
+    
+    
+    
+    
+    // GIVEN I am taking a code quiz 
+    // WHEN I click the start button
+    // THEN a timer starts and I am presented with a question
+    // WHEN I answer a question
+    // THEN I am presented with another question
+    // WHEN I answer a question incorrectly
+    // THEN time is subtracted from the clock
+    // WHEN all questions are answered or the timer reaches 0
+    // THEN the game is over
+    // WHEN the game is over
+    // THEN I can save my initials and my score
+    
+    ////Is this one or two functions?
+    // startTimer()
+    // showQuestion()
+    //-----------------------------------------------
+    // if(answer == false), then deduct 6 from time
+    
+    //What is the user going to have to do..
+    
+    //start button, radio button, high-score button, percede to the next question
+    
+    //go through loop to change index number
+    //event listener is going to trigger timer, 
+    
+    // correct and incorrect function for answer that effects time
+    
+    //JSON.parse()
+    
+    // var testObject = {
+        //     name: 'Hudson',
+        //     score: '89'
+        // }
+        // localStorage.setItem("scores", JSON.stringify(testObject));
