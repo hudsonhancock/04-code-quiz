@@ -12,7 +12,6 @@ var inputC = document.getElementById('c');
 var inputD = document.getElementById('d');
 
 var currentQuiz = 0;
-var latestAnswer = [];
 
 
 // quizData[0].question
@@ -108,48 +107,56 @@ function loadQuiz(){
     }
 
 function getAnswer(){
+
+
     var selected = document.querySelector('input[type="radio"]:checked');
     
     if(!selected){
         alert('You must select an answer.');
     } else{
-        latestAnswer.push(selected.value);
+        stringAnswer = selected.value;
+        latestAnswer = latestAnswer.concat(stringAnswer);
         console.log(latestAnswer);
         currentQuiz++;
         loadQuiz();
     }
 }
 
-
+var latestAnswer = "";
 
 
 //Handles the submit click event
-    submit.addEventListener('click', () => {
-    var answer = getAnswer();
-
-    if(latestAnswer === quizData[currentQuiz].correct){
-        console.log('correct');
-    } else{
-        totalTime = totalTime - 10;
-
+    submit.addEventListener('click', grade);
+    
+    function grade(){
+console.log(quizData[currentQuiz].correct)
+        getAnswer();
+    
+        if(latestAnswer === quizData[currentQuiz].correct){
+            console.log('correct');
+        } else{
+            totalTime = totalTime - 10;
+    
+        }
+    
+    
+            if(currentQuiz <= quizData.length){
+                // getAnswer();
+                setValue();
+                loadQuiz();
+                
+            } else{
+                alert('You finished!');
+                questionEl.innerHTML = "doop"
+                aText.innerHTML = "doop"
+                bText.innerHTML = "doop"
+                cText.innerHTML = "doop"
+                dText.innerHTML = "doop"
+            }
     }
 
-
-        if(currentQuiz <= quizData.length){
-            // getAnswer();
-            setValue();
-            loadQuiz();
             
-        } else{
-            alert('You finished!');
-            questionEl.innerHTML = "doop"
-            aText.innerHTML = "doop"
-            bText.innerHTML = "doop"
-            cText.innerHTML = "doop"
-            dText.innerHTML = "doop"
-        }
-        
-    }); 
+    
     
     
     
