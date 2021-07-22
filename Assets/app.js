@@ -6,6 +6,10 @@ var aText = document.getElementById('a_text');
 var bText = document.getElementById('b_text');
 var cText = document.getElementById('c_text');
 var dText = document.getElementById('d_text');
+var inputA = document.getElementById('a');
+var inputB = document.getElementById('b');
+var inputC = document.getElementById('c');
+var inputD = document.getElementById('d');
 
 // quizData[0].question
 // quizData[0].a
@@ -58,13 +62,21 @@ var quizData = [
 
 
 
+    function getAnswer(){
+        var selected = document.querySelector('input[type="radio"]:checked');
+        var selectedAnswer = selected.value;
+        console.log(selectedAnswer);
+    }
+
 var testObject = {
     name: 'Hudson',
     score: '89'
 }
 
-function takeQuiz(){
+function showQuestion(){
+    for(i = 0; i <= quizData.length; i++){
         console.log(quizData.length)
+        setValue();
         start.classList.add("hide");
         submit.classList.remove("hide");
         questionEl.innerHTML = quizData[0].question;
@@ -72,15 +84,28 @@ function takeQuiz(){
         bText.innerHTML = quizData[0].b;
         cText.innerHTML = quizData[0].c;
         dText.innerHTML = quizData[0].d;
+        break;
+        submit.addEventListener('click', getAnswer);
+        continue;
     }
+}
 
-    $(function(){
-        console.log($('input:checked').closest('.answer').find('.answer').html());
-      })
+        
 
-localStorage.setItem("scores", JSON.stringify(testObject));
 
-start.addEventListener('click', takeQuiz);
+    function setValue(){
+        for(i = 0; i <= quizData.length; i++){
+            inputA.setAttribute('value', quizData[0].a);
+            inputB.setAttribute('value', quizData[0].b);
+            inputC.setAttribute('value', quizData[0].c);
+            inputD.setAttribute('value', quizData[0].d);
+        }
+    }
+                
+
+// localStorage.setItem("scores", JSON.stringify(testObject));
+
+start.addEventListener('click', showQuestion);
 
 
 
@@ -113,4 +138,3 @@ start.addEventListener('click', takeQuiz);
 // correct and incorrect function for answer that effects time
 
 //JSON.parse()
-
