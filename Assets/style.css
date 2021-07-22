@@ -42,11 +42,17 @@ max-width: 100%;
 
 .quiz-header{
     padding: 3rem;
-    /* padd */
+}
+
+#timer{
+text-align: center;
+padding: 0 0 2rem 0;
+color:cornflowerblue;
+font-size: 50px;
 }
 
 button{
-    background-color: #8e44ad;
+    background-color: blue;
     display: block;
     width: 100%;
     padding: 2rem;

@@ -2,6 +2,8 @@
 var start = document.getElementById('start');
 var questionEl = document.getElementById('question');
 var submit = document.getElementById('submit');
+var postScore = document.getElementById('post_score');
+var timerEl = document.getElementById('timer');
 var aText = document.getElementById('a_text');
 var bText = document.getElementById('b_text');
 var cText = document.getElementById('c_text');
@@ -10,6 +12,7 @@ var inputA = document.getElementById('a');
 var inputB = document.getElementById('b');
 var inputC = document.getElementById('c');
 var inputD = document.getElementById('d');
+var list = document.getElementsByTagName('ul');
 
 var currentQuiz = 0;
 
@@ -61,53 +64,60 @@ var quizData = [
     }
 ]
 
-
     
 function startQuiz(){
     start.classList.add("hide");
     submit.classList.remove("hide");
+    timerEl.classList.remove("hide");
     loadQuiz();
     setInterval(startTimer, 1000);
     
 }
 
-function setValue(){
-    var currentQuizData = quizData[currentQuiz];
-
-    for(i = 0; i < quizData.length; i++){
-        inputA.setAttribute('value', currentQuizData.a);
-            inputB.setAttribute('value', currentQuizData.b);
-            inputC.setAttribute('value', currentQuizData.c);
-            inputD.setAttribute('value', currentQuizData.d);
-        }
-    }
-
-function removeSelectedBtn(){
-
-}
-
-
-var totalTime = '100'
-
-function startTimer(){
-        totalTime--;
-        // console.log(totalTime);
-    }
-
-
 function loadQuiz(){
  var currentQuizData = quizData[currentQuiz];
         setValue();
-
         questionEl.innerHTML = currentQuizData.question;
         aText.innerHTML = currentQuizData.a;
         bText.innerHTML = currentQuizData.b;
         cText.innerHTML = currentQuizData.c;
         dText.innerHTML = currentQuizData.d;
+ }
+
+function setValue(){
+    var currentQuizData = quizData[currentQuiz];
+
+    for(i = 0; i < quizData.length; i++){
+            inputA.setAttribute('value', currentQuizData.a);
+            inputB.setAttribute('value', currentQuizData.b);
+            inputC.setAttribute('value', currentQuizData.c);
+            inputD.setAttribute('value', currentQuizData.d);
+        }
+}
+
+var totalTime = '100'
+
+function startTimer(){
+    if(totalTime >= 1){
+        totalTime--;
+        // console.log(totalTime);
+        timerEl.innerText = totalTime;
+    } else{
+        timerEl.innerText = 'You are out of time.'
+        list.classList.add('hide');
     }
+        
+        // if(totalTime = 0){
+        //     timerEl.innerText = 'You ran out of time.';
+        // }
+}
 
-function getAnswer(){
+function removeSelectedBtn(){
 
+}
+
+function getSelected(){
+    latestAnswer = "";
 
     var selected = document.querySelector('input[type="radio"]:checked');
     
@@ -126,43 +136,57 @@ var latestAnswer = "";
 
 
 //Handles the submit click event
-    submit.addEventListener('click', grade);
+    submit.addEventListener('click', function(){
+        if(currentQuiz < 4){
+        objectRule = quizData[currentQuiz].correct;
+        stringRule = JSON.stringify(objectRule);
+        console.log(stringRule);
+        getSelected();
     
-    function grade(){
-console.log(quizData[currentQuiz].correct)
-        getAnswer();
-    
-        if(latestAnswer === quizData[currentQuiz].correct){
+        if('"' + latestAnswer + '"' == stringRule){
             console.log('correct');
+            // alert('correct');
         } else{
+            console.log('wrong');
+            // alert('wrong')
             totalTime = totalTime - 10;
-    
         }
-    
-    
-            if(currentQuiz <= quizData.length){
-                // getAnswer();
-                setValue();
-                loadQuiz();
-                
-            } else{
-                alert('You finished!');
-                questionEl.innerHTML = "doop"
-                aText.innerHTML = "doop"
-                bText.innerHTML = "doop"
-                cText.innerHTML = "doop"
-                dText.innerHTML = "doop"
-            }
-    }
+            setValue();
+            loadQuiz();
+
+        } else{
+
+            submit.classList.add("hide");
+            postScore.classList.remove("hide");
+        }
+     });
+
+     postScore.addEventListener('click', function(){
+         
+     });
+
+     start.addEventListener('click', startQuiz);
+    //This loads up the next question until it display the high-score page.
+   
 
             
     
     
+    // if(currentQuiz <= quizData.length){
+    //     setValue();
+    //     loadQuiz();
+        
+    // } else{
+    //     alert('You finished!');
+    //     questionEl.innerHTML = "doop"
+    //     aText.innerHTML = "doop"
+    //     bText.innerHTML = "doop"
+    //     cText.innerHTML = "doop"
+    //     dText.innerHTML = "doop"
+    // }
     
     
     
-    
-    start.addEventListener('click', startQuiz);
     
     
     
