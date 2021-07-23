@@ -136,7 +136,6 @@ var latestAnswer = "";
 
 //Handles the submit click event
     submit.addEventListener('click', function(){
-        
         if(currentQuiz < 4){
         objectRule = quizData[currentQuiz].correct;
         stringRule = JSON.stringify(objectRule);
