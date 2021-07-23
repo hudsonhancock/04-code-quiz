@@ -5,6 +5,7 @@ var questionEl = document.getElementById('question');
 var submit = document.getElementById('submit');
 var postScore = document.getElementById('post_score');
 var timerEl = document.getElementById('timer');
+var lineEl = document.getElementById('line');
 
 var saveMenu = document.getElementById('save_menu');
 var saveText = document.getElementById('save_text');
@@ -68,6 +69,8 @@ var quizData = [
     
 function startQuiz(){
     greeting.classList.add('hide');
+    line.classList.add('hide');
+
     start.classList.add("hide");
     list.classList.remove('hide')
     submit.classList.remove("hide");

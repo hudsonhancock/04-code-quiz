@@ -24,29 +24,60 @@ body{
     height: 30vh;
 }
 
-.progressBar{
+/* .progressBar{
     margin: 20px 0;
-}
+} */
 
 .button{
     display: block;
+    width: 100%;
+    
+}
+
+.btn_container{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .quiz-container{
 background-color: #fff;
 border-radius: 10px;
-box-shadow: 0 0 50px 10px;
-width: 600px;
-max-width: 100%;
+box-shadow: 0 0 50px 5px;
+width: 100%;
+position: relative;
+height: 100vh;
+/* max-width: 100%; */
+display: flex;
+align-items: center;
+flex-direction: column;
 }
 
+
+
 .quiz-header{
-    padding: 3rem;
+    /* padding: 3rem; */
+    /* width: 375px; */
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 25%; */
+    padding: 0 40px;
+}
+
+#greeting_p{
+    font-size: 1.3rem;
+    color: grey;
+}
+
+#greeting_header{
+    padding-top: 12rem;
 }
 
 #timer{
 text-align: center;
-padding: 0 0 2rem 0;
+padding: 3rem 0 0rem 0;
 color:cornflowerblue;
 font-size: 50px;
 }
@@ -60,12 +91,15 @@ button{
     border: none;
     font-size: 1.5rem;
     overflow: hidden;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    /* /* border-bottom-left-radius: 10px; */
+    border-bottom-right-radius: 10px; */
 }
 
-#post_score, #save{
+#post_score, #save, #go_home{
     background-color: green;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .hide{
@@ -75,6 +109,11 @@ button{
 
 h2{
     margin: 0;
+    font-size: 2.5rem;
+}
+
+#question{
+    font-size: 1.5rem;
 }
 
 ul{
@@ -83,12 +122,19 @@ ul{
 }
 
 ul li{
-    font-size: 1.2;
-    margin: 1rem 0;
+    /* font-size: 1.8; */
+    margin: 2rem 0;
 }
 
 ul li label{
     cursor: pointer;
+    font-size: 25px;
+}
+
+input[type=radio] {
+    border: 0px;
+    /* width: 100%; */
+    /* height: em; */
 }
 
 #submit{
@@ -96,9 +142,10 @@ ul li label{
 }
 
 #save_menu{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+display: flex;
+justify-content: center;
+flex-direction: column;
+margin: 1.5rem;
 }
 
 #save_text{
@@ -107,12 +154,17 @@ ul li label{
 }
 
 #name{
-    margin: 20px 90px;
-    padding: 10px 0 10px 10px;
+    /* padding: 10px 0 10px 10px; */
     border-radius: 5px;
     /* padding: 10px 50px; */
+    text-align: center;
+    font-size: 40px;
 }
 
 #start{
+    cursor: pointer;
+}
+
+#save{
     cursor: pointer;
 }

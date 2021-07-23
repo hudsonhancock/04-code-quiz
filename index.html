@@ -17,6 +17,7 @@
         <section id="greeting">
             <h2 id="greeting_header">Test Your Knowledge of JavaScript</h2>
             <p id="greeting_p">To begin your quiz, press start.</p>
+            <hr id="line">
         </section>
         
         <ul class="hide" id="list">
@@ -43,10 +44,13 @@
                 <input id="name" class="hide" type="text"><label for=""></label>
             </section>
         </div>
-        <button class="hide" id="submit">Submit</button>
-        <button id="start">Start</button>
-        <button class = 'hide' id="post_score">Finish Quiz</button>
-        <button href="~/highscores.html" class = 'hide' id="save">Save</button>
+
+        <div class="btn_container">
+            <button class="hide" id="submit">Submit</button>
+            <button id="start">Start</button>
+            <button class = 'hide' id="post_score">Finish Quiz</button>
+            <button href="~/highscores.html" class = 'hide' id="save">Save</button>
+         </div>
 
     </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
