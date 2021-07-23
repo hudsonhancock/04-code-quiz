@@ -21,16 +21,6 @@ var list = document.getElementById('list');
 
 var currentQuiz = 0;
 
-var storageData = {
-            name: 'Hudson',
-            score: '89'
-}
-
-
-// quizData[0].question
-// quizData[0].a
-
-
 
 var quizData = [
     {
@@ -73,6 +63,7 @@ var quizData = [
         correct: 'if (i == 5)'
     }
 ]
+
 
     
 function startQuiz(){
@@ -181,13 +172,32 @@ var latestAnswer = "";
         saveName.classList.remove('hide');
      });
 
-     saveBtnEl.addEventListener('click', function(){
+     var scoreStorage = {name: '', score:''};
 
-     })
+   
+
+    saveBtnEl.addEventListener('click', function(){
+        var userData = {
+            name:'',
+            score:''
+        }
+        username = saveName.value;
+        localStorage.setItem("scores", JSON.stringify(userData));
+
+        // scoreStorage.push(username);
+        // console.log(scoreStorage);
+        // localStorage.setItem('Name', username);
+        // localStorage.setItem('Score', totalTime);
+    });
+
+
+ 
+
+   
+    const highScores = JSON.parse(localStorage.getItem("highscores")) || [];
 
      start.addEventListener('click', startQuiz);
     //This loads up the next question until it display the high-score page.
-   
 
             
     
