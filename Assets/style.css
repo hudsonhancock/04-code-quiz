@@ -28,6 +28,17 @@ body{
     margin: 20px 0;
 } */
 
+#hs_a{
+    text-align: center;
+    background-color: green;
+    text-decoration: none;
+    padding: 1rem;
+    width: 100%;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+}
+
 .button{
     display: block;
     width: 100%;
@@ -72,7 +83,7 @@ flex-direction: column;
 }
 
 #greeting_header{
-    padding-top: 12rem;
+    padding-top:6rem;
 }
 
 #timer{
@@ -159,6 +170,11 @@ margin: 1.5rem;
     /* padding: 10px 50px; */
     text-align: center;
     font-size: 40px;
+    width: 300px;
+    margin-left: 50%;
+    margin-right: 50%;
+    position: relative;
+    right: 150px
 }
 
 #start{

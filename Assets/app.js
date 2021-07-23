@@ -6,6 +6,8 @@ var submit = document.getElementById('submit');
 var postScore = document.getElementById('post_score');
 var timerEl = document.getElementById('timer');
 var lineEl = document.getElementById('line');
+var inputEls = document.getElementsByTagName('input');
+console.log(inputEls);
 
 var saveMenu = document.getElementById('save_menu');
 var saveText = document.getElementById('save_text');
@@ -65,8 +67,6 @@ var quizData = [
     }
 ]
 
-
-    
 function startQuiz(){
     greeting.classList.add('hide');
     line.classList.add('hide');
@@ -81,6 +81,7 @@ function startQuiz(){
 }
 
 function loadQuiz(){
+    deselectAnswers();
  var currentQuizData = quizData[currentQuiz];
         setValue();
         questionEl.innerHTML = currentQuizData.question;
@@ -114,8 +115,11 @@ function startTimer(){
     }
 }
 
-function removeSelectedBtn(){
-
+function deselectAnswers(){
+    inputA.checked = false;
+    inputB.checked = false;
+    inputC.checked = false;
+    inputD.checked = false;
 }
 
 function getSelected(){
@@ -181,9 +185,14 @@ var latestAnswer = "";
      var mostRecentScore = localStorage.getItem('mostRecentScore');
 
      const savedScores = JSON.parse(localStorage.getItem('scores')) || [];
+     var saveLink = document.getElementById('saveLink');
      
      saveBtnEl.addEventListener('click', function(){
          console.log('clicked the save button!');
+
+         if(saveName.value = ''){
+             saveLink.disabled;
+         }
          
          const score = {
              score: totalTime,
@@ -197,6 +206,7 @@ var latestAnswer = "";
          localStorage.setItem('scores', JSON.stringify(savedScores));
         
          console.log(savedScores);
+       
     });
 
     // username = saveName.value;

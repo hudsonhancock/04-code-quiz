@@ -9,14 +9,17 @@
     <title>Code Quiz</title>
 </head>
 <body>
-
     <div class="quiz-container">
+        <a id="hs_a" href="./highscores.html">High Scores</a>
         <div class="quiz-header">
         <h2 id="timer" class="hide">100</h2>
         
         <section id="greeting">
             <h2 id="greeting_header">Test Your Knowledge of JavaScript</h2>
             <p id="greeting_p">To begin your quiz, press start.</p>
+            <p id="greeting_p">Remaining time is your final score.</p>
+            <p id="greeting_p">Wrong answers result in 10 second deduction.</p>
+            <p id="greeting_p">Remember to hit Finish Quiz after the last question!</p>
             <hr id="line">
         </section>
         
@@ -24,7 +27,7 @@
                 <h2 id="question">Question Text</h2>
                 <li>
                     <input type="radio" name="option" id="a" value="">
-                    <label name="answer" id="a_text" class="answer">Answer</label>
+                    <label for="a" name="answer" id="a_text" class="answer">Answer</label>
                 </li>
                 <li>
                     <input type="radio" name="option" id="b" value="">
@@ -32,16 +35,16 @@
                 </li>
                 <li>
                     <input type="radio" name="option" id="c" value="">
-                    <label name="answer" id="c_text" class="answer">Answer</label>
+                    <label for="a" name="answer" id="c_text" class="answer">Answer</label>
                 </li>
                 <li>
                     <input type="radio" name="option" id="d" value="">
-                    <label name="answer" id="d_text" class="answer">Answer</label>
+                    <label for="c" name="answer" id="d_text" class="answer">Answer</label>
                 </li>
             </ul>
             <section id="save_menu" class="hide">
                 <h2 id="save_text"></h2>
-                <input id="name" class="hide" type="text"><label for=""></label>
+                <input for="d" id="name" class="hide" type="text"><label for=""></label>
             </section>
         </div>
 
@@ -49,7 +52,7 @@
             <button class="hide" id="submit">Submit</button>
             <button id="start">Start</button>
             <button class = 'hide' id="post_score">Finish Quiz</button>
-            <a href="./highscores.html"><button href="highscores.html" class = 'hide' id="save">Save</button></a> 
+            <a id="saveLink" href="./highscores.html"><button href="highscores.html" class = 'hide' id="save">Save</button></a> 
          </div>
 
     </div>
