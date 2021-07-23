@@ -5,10 +5,10 @@ var questionEl = document.getElementById('question');
 var submit = document.getElementById('submit');
 var postScore = document.getElementById('post_score');
 var timerEl = document.getElementById('timer');
-var saveBtnEl = document.getElementById('save');
+
 var saveMenu = document.getElementById('save_menu');
 var saveText = document.getElementById('save_text');
-var saveName = document.getElementById('name');
+
 var aText = document.getElementById('a_text');
 var bText = document.getElementById('b_text');
 var cText = document.getElementById('c_text');
@@ -136,6 +136,7 @@ var latestAnswer = "";
 
 //Handles the submit click event
     submit.addEventListener('click', function(){
+        
         if(currentQuiz < 4){
         objectRule = quizData[currentQuiz].correct;
         stringRule = JSON.stringify(objectRule);
@@ -172,24 +173,37 @@ var latestAnswer = "";
         saveName.classList.remove('hide');
      });
 
-     var scoreStorage = {name: '', score:''};
 
-   
+     var saveBtnEl = document.getElementById('save');
+     var saveName = document.getElementById('name');
+     var mostRecentScore = localStorage.getItem('mostRecentScore');
 
-    saveBtnEl.addEventListener('click', function(){
-        var userData = {
-            name:'',
-            score:''
-        }
-        username = saveName.value;
-        localStorage.setItem("scores", JSON.stringify(userData));
+     const savedScores = JSON.parse(localStorage.getItem('scores')) || [];
+     
+     saveBtnEl.addEventListener('click', function(){
+         console.log('clicked the save button!');
+         
+         const score = {
+             score: totalTime,
+             name: saveName.value
+         };
 
-        // scoreStorage.push(username);
-        // console.log(scoreStorage);
-        // localStorage.setItem('Name', username);
-        // localStorage.setItem('Score', totalTime);
+         savedScores.push(score);
+         savedScores.sort( (a,b) => b.score - a.score)
+         savedScores.splice(5);
+
+         localStorage.setItem('scores', JSON.stringify(savedScores));
+        
+         console.log(savedScores);
     });
 
+    // username = saveName.value;
+    // localStorage.setItem("scores", JSON.stringify(userData));
+
+    // scoreStorage.push(username);
+    // console.log(scoreStorage);
+    // localStorage.setItem('Name', username);
+    // localStorage.setItem('Score', totalTime);
 
  
 
