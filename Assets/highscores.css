@@ -1,5 +1,5 @@
 #hs_header{
-padding: 0;
+padding-top: 12rem;
 }
 
 
@@ -10,6 +10,7 @@ padding: 0;
 
 li{
     text-align: center;
+    font-size: 2rem;
 }
 
 #go_home{
@@ -17,6 +18,8 @@ li{
 }
 
 ul{
-    border: #101010 2px dashed;
+    /* border: grey 2px solid; */
+    padding: ;
     border-radius: 10px;
+    background-color: white;
 }
