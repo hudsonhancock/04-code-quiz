@@ -189,10 +189,6 @@ var latestAnswer = "";
      
      saveBtnEl.addEventListener('click', function(){
          console.log('clicked the save button!');
-
-         if(saveName.value = ''){
-             saveLink.disabled;
-         }
          
          const score = {
              score: totalTime,
