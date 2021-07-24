@@ -187,7 +187,13 @@ var latestAnswer = "";
      const savedScores = JSON.parse(localStorage.getItem('scores')) || [];
      var saveLink = document.getElementById('saveLink');
      
+     saveName.addEventListener('input', function (){
+     saveBtnEl.removeAttribute('disabled');
+     })
+
      saveBtnEl.addEventListener('click', function(){
+
+
          console.log('clicked the save button!');
          
          const score = {
